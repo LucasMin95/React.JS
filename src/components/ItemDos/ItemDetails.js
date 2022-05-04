@@ -3,7 +3,7 @@ import { itemData } from "../../data/itemData"
 import ItemCard from "./ItemCard"
 
 const ItemDetails = () => {
-     const [item, setItem] = useState ([])
+     const [item, setItem] = useState ({})
 
         useEffect(() => {
           getItem()
@@ -17,12 +17,12 @@ const ItemDetails = () => {
             })
 
             getItemPromise.then ( data => {
-                setItem(data);
+                setItem(data.find(item => item.id ==3));
             })
         }
     return (
         <div>
-            {item.map( m => <ItemCard key={m.id} item={m}/>)}
+            <ItemCard item={item}/>
         </div>
     )
 }
